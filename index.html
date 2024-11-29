@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHCP && DNS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-------------------------------------------->
+    <div class="rectangulo"><h1>DHCP && DNS</h1></div>
+    <!-------------------------------------------->
+    <div id="circle-bg"></div>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    <script>
+        //funcion circulos generadora de circulos
+        function generateBackgroundCircles() {
+            const circleContainer = document.getElementById('circle-bg');
+            circleContainer.innerHTML = '';
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const size = 40; 
+
+            for (let y = -20; y < height; y += size * 0.9) { // espaciado vertical
+                for (let x = 0; x < width; x += size * Math.sqrt(3)) { // espaciado horizontal
+                    const circle = document.createElement('div');
+                    circle.className = 'circle extra';
+                    circle.style.left = `${x}px`;
+                    circle.style.top = `${y}px`;
+                    circleContainer.appendChild(circle);
+                }
+                for (let x = size * Math.sqrt(3) / 2; x < width; x += size * Math.sqrt(3)) {
+                    const circle = document.createElement('div');
+                    circle.className = 'circle extra';
+                    circle.style.left = `${x}px`;
+                    circle.style.top = `${y + size * 0.4}px`; // espaciado entre filas
+                    circleContainer.appendChild(circle);
+                }
+            }
+        }
+
+        generateBackgroundCircles();
+
+        // regargar circulos al cambiar el tamaño de la pantalla
+        window.addEventListener('resize', generateBackgroundCircles);
+
+        // efecto radio del raton
+        document.addEventListener('mousemove', (event) => {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+            const circles = document.querySelectorAll('.circle.extra');
+            circles.forEach(circle => {
+                const rect = circle.getBoundingClientRect();
+                const circleX = rect.left + rect.width / 2;
+                const circleY = rect.top + rect.height / 2;
+                const distance = Math.hypot(mouseX - circleX, mouseY - circleY);
+                if (distance < 160) { 
+                    circle.classList.add('hover');
+                } else {
+                    circle.classList.remove('hover');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
