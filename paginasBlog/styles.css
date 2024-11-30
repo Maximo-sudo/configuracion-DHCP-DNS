@@ -16,7 +16,7 @@ body, html {
 
 .blog {
     width: 88%;
-    height: 700px;
+    height: 1600px;
     background: -webkit-linear-gradient(90deg, #416576,#778888,#416576);
     background: linear-gradient(90deg, #416576,#778888,#416576);                                             
     z-index: 50;
@@ -34,6 +34,8 @@ body, html {
     transform: scale(1.001);
 }
 
+/*----------------------------------------------------------------*/
+
 .titulos {
     background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
@@ -44,10 +46,10 @@ body, html {
     justify-content: center;
     padding: 15px;
     margin-bottom: 20px;
-    margin-top: -170px;
+    margin-top: -80px;
     border-radius: 20%;
     border: 10px solid black;
-    transition: transform 2.5s ease, box-shadow 0.3s ease;
+    transition: transform 1.5s ease, box-shadow 0.3s ease;
 }
 .titulos h1 {
     font-size: 100px;
@@ -61,8 +63,12 @@ body, html {
 }
 .titulos:hover h1 {
     text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 1);
-    transition: transform 3s ease, text-shadow 3s ease;
+    transition: transform 1.5s ease, text-shadow 1.5s ease;
 }
+
+
+/*----------------------------------------------------------------*/
+
 
 .subTitulos {
     background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
@@ -85,12 +91,55 @@ body, html {
 }
 .subTitulos:hover {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.17);
-    transform: scale(1.03);
+    transform: scale(1.50);
 }
 
+/*----------------------------------------------------------------*/
+
 .texto {
-background-color: white;
+    background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
+    background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
+    border-radius: 20%;
+    border: 10px solid black;
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    margin-top: 20px;
+    flex-direction: column;
 }
+
+.texto p, ul {
+    font-size: 20px;
+    font-family: 'Bahnschrift Condensed';
+    font-weight: 40px;
+    color: white;
+}
+
+.texto h1 { 
+    text-align: center; 
+    font-family: 'Bahnschrift Condensed'; 
+    color: white; 
+    } 
+
+.texto strong { 
+    color: #007BFF; 
+} 
+
+.texto code { 
+    background-color: black; 
+    padding: 2px 4px; 
+    border-radius: 3px; 
+}
+
+.texto:active {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.17);
+    transform: scale(2.45);
+}
+
+/*----------------------------------------------------------------*/
+
 .boton {
 background-color: white;
 }

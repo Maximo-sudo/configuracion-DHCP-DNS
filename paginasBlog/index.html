@@ -11,9 +11,23 @@
         <div class="titulos"><h1>Ejerccicio DHCP && DNS</h1></div>
         <div class="subTitulos"><h2>Enunciado Del Ejercicio</h2></div>
         <div class="texto">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente quasi exercitationem ad accusamus adipisci sit fugit nobis necessitatibus eaque, fugiat molestias inventore quos quod tenetur sunt expedita. Maiores, voluptates, odit.
-            Error molestiae, consectetur. Commodi temporibus aliquam animi architecto tempore corporis ea voluptatibus laboriosam deleniti assumenda quasi ducimus, fuga nam expedita perspiciatis nulla placeat corrupti, eius laborum illo. Illo, nesciunt, quo.
-            Quis deleniti vitae dolore suscipit est reiciendis minima laudantium, possimus magni. Eligendi, illo repellat minima natus, nemo totam nam molestias aspernatur, quis provident atque culpa, amet odit voluptatum eos repudiandae. </p>
+        
+
+        <h1>Configuración de Servidor DNS y DHCP</h1>
+        <p>Configure un servidor con los servicios DNS y DHCP utilizando un sistema operativo de su elección Windows server 2012 y Debian Server. Asigne dos equipos cliente en la red:</p>
+        <ul>
+            <li><strong>Cliente 1:</strong> Utilizará el sistema operativo Windows.</li>
+            <li><strong>Cliente 2:</strong> Utilizará el sistema operativo Debian.</li>
+        </ul>
+        <p>Configure el rango de direcciones IP que asignará el servidor DHCP en el rango: <strong>192.168.1.100 - 192.168.1.200</strong>.</p>
+        <p>Verifique la configuración realizando las siguientes pruebas desde los clientes:</p>
+        <ul>
+            <li><strong>Resolución de nombres de dominio:</strong> Por ejemplo, al ingresar la IP 192.168.1.X debe resolver a un dominio (como <em>www.ejemplo.com</em>).</li>
+            <li><strong>Utilice el comando <code>nslookup</code>:</strong> Para comprobar la resolución de nombres hacia direcciones IP (por ejemplo: <code>nslookup 8.8.8.8</code>).</li>
+        </ul>
+        <p><strong>Objetivo:</strong> Asegurarse de que el servidor DNS está resolviendo correctamente los nombres y que el servidor DHCP está asignando las IPs dentro del rango establecido.</p>
+
+
         </div>
         <section class="boton">
             <div class="boton1"><p>Metodo 1</p></div>
