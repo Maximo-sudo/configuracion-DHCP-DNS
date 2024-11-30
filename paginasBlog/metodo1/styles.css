@@ -70,7 +70,7 @@ body, html {
 /*----------------------------------------------------------------*/
 
 
-.subTitulos {
+.subTitulos, .atras {
     background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     width: auto;
@@ -83,93 +83,29 @@ body, html {
     transition: transform 0.1s ease, box-shadow 0.3s ease;
     padding: 25px;
 }
+.atras {
+    margin-top: 20px;
+}
 .subTitulos h2 {
     font-size: 50px;
     font-family: 'Bahnschrift Condensed';
     font-weight: 40px;
     color: white;
 }
-.subTitulos:hover {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.17);
-    transform: scale(1.50);
-}
-
-/*----------------------------------------------------------------*/
-
-.texto {
-    background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
-    background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
-    border-radius: 20%;
-    border: 10px solid black;
-    transition: transform 0.1s ease, box-shadow 0.3s ease;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-    margin-top: 20px;
-    flex-direction: column;
-}
-
-.texto p, ul {
+.atras h2 {
     font-size: 20px;
     font-family: 'Bahnschrift Condensed';
     font-weight: 40px;
     color: white;
 }
-
-.texto h1 { 
-    text-align: center; 
-    font-family: 'Bahnschrift Condensed'; 
-    color: white; 
-    } 
-
-.texto strong { 
-    color: #007BFF; 
-} 
-
-.texto code { 
-    background-color: black; 
-    padding: 2px 4px; 
-    border-radius: 3px; 
-}
-
-.texto:active {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.17);
-    transform: scale(2.45);
-}
-
-/*----------------------------------------------------------------*/
-
-.boton {
-    width: 30%;
-    align-items: center;
-    display: flex;
-    justify-content: space-around;
-    padding: 25px;
-}
-.boton1, .boton2 {
-    background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
-    background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
-    border-radius: 20%;
-    border: 10px solid black;
-    width: 45%;
-    padding: 15px;
-    color: white;
-    display: flex;
-    text-align: center;
-    font-family: 'Bahnschrift Condensed'; 
-    flex-direction: column;
-}
-.boton1 {
-    margin-right: 60px;
-}
-
-.boton1:hover, .boton2:hover {
+.subTitulos:hover, .atras:hover {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.17);
     transform: scale(1.50);
 }
 
-
+.subTitulos a , .atras a {
+    text-decoration: none;
+}
 
 
 /*----------------------------------------------------------------*/
