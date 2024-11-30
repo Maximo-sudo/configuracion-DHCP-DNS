@@ -43,8 +43,8 @@ body, html {
     display: flex;
     justify-content: center;
     padding: 15px;
-    margin-bottom: 50px;
-    margin-top: -150px;
+    margin-bottom: 20px;
+    margin-top: -170px;
     border-radius: 20%;
     border: 10px solid black;
     transition: transform 2.5s ease, box-shadow 0.3s ease;
@@ -68,14 +68,26 @@ body, html {
     background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     width: 40%;
-    height: 100px;
+    height: 60px;
     align-items: center;
     display: flex;
     justify-content: center;
     border-radius: 20%;
     border: 10px solid black;
-    transition: transform 2.5s ease, box-shadow 0.3s ease;
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
+    padding: 15px;
 }
+.subTitulos h2 {
+    font-size: 50px;
+    font-family: 'Bahnschrift Condensed';
+    font-weight: 40px;
+    color: white;
+}
+.subTitulos:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.17);
+    transform: scale(1.03);
+}
+
 .texto {
 background-color: white;
 }
