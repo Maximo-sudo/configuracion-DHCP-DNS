@@ -141,14 +141,34 @@ body, html {
 /*----------------------------------------------------------------*/
 
 .boton {
-background-color: white;
+    width: 30%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    padding: 25px;
+}
+.boton1, .boton2 {
+    background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
+    background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
+    border-radius: 20%;
+    border: 10px solid black;
+    width: 45%;
+    padding: 15px;
+    color: white;
+    display: flex;
+    text-align: center;
+    font-family: 'Bahnschrift Condensed'; 
+    flex-direction: column;
 }
 .boton1 {
-background-color: white;
+    margin-right: 60px;
 }
-.boton2 {
-background-color: white;
+
+.boton1:hover, .boton2:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.17);
+    transform: scale(1.50);
 }
+
 
 
 
