@@ -70,7 +70,7 @@ body, html {
 }
 /*----------------------------------------------------------------*/
 
-.texto, .viddeo {
+.texto, .viddeo, .imagenes {
     background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     border: 10px solid black;
@@ -110,17 +110,17 @@ body, html {
     border-radius: 3px; 
 }
 
-.texto:active, .viddeo:active {
+.texto:active, .viddeo:active, .imagenes:active {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.17);
     transform: scale(2.45);
 }
 
 /*----------------------------------------------------------------*/
 
-.video-container { 
+.video-container, .imagenes { 
     text-align: center; 
 } 
-video { 
+video{ 
     width: 100%; 
     max-width: 600px; 
     border: 2px solid #ccc; 
