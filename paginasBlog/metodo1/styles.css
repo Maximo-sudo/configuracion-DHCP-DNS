@@ -5,18 +5,23 @@ body, html {
     background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);                                             
     background: radial-gradient(circle, rgba(12, 20, 60, 1) 30%, rgba(54, 84, 236, 1) 100%);
+    overflow: auto;
+    position: relative;
+    flex-direction: column;
+}
+
+.contenedorCentral {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto;
-    position: relative;
+    min-height: 100vh;
 }
 
 /*----------------------------------------------------------------*/
 
 .blog {
     width: 88%;
-    height: 1600px;
+    min-height: 100vh /*añadirAlResto*/
     background: -webkit-linear-gradient(90deg, #416576,#778888,#416576);
     background: linear-gradient(90deg, #416576,#778888,#416576);                                             
     z-index: 50;
@@ -27,6 +32,8 @@ body, html {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    padding: 20px;
+    margin: 20px 0;
 }
 
 .blog:hover {
@@ -40,13 +47,10 @@ body, html {
     background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     width: 80%;
-    height: 100px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+    height: auto;
+    text-align: center;
     padding: 15px;
     margin-bottom: 20px;
-    margin-top: -80px;
     border-radius: 20%;
     border: 10px solid black;
     transition: transform 1.5s ease, box-shadow 0.3s ease;
@@ -69,13 +73,71 @@ body, html {
 
 /*----------------------------------------------------------------*/
 
+.texto, .viddeo {
+    background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
+    background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
+    border: 10px solid black;
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    margin-top: 20px;
+    flex-direction: column;
+}
 
-.subTitulos, .atras {
+.texto {
+    border-radius: 20%;
+}
+
+.texto p, ul {
+    font-size: 20px;
+    font-family: 'Bahnschrift Condensed';
+    font-weight: 40px;
+    color: white;
+}
+
+.texto h1 { 
+    text-align: center; 
+    font-family: 'Bahnschrift Condensed'; 
+    color: white; 
+    } 
+
+.texto strong { 
+    color: #007BFF; 
+} 
+
+.texto code { 
+    background-color: black; 
+    padding: 2px 4px; 
+    border-radius: 3px; 
+}
+
+.texto:active, .viddeo:active {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.17);
+    transform: scale(2.45);
+}
+
+/*----------------------------------------------------------------*/
+
+.video-container { 
+    text-align: center; 
+} 
+video { 
+    width: 100%; 
+    max-width: 600px; 
+    border: 2px solid #ccc; 
+    border-radius: 10px
+}
+
+/*----------------------------------------------------------------*/
+
+
+.subTitulos {
     background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
     width: auto;
-    height: 60px;
-    align-items: center;
+    text-align: center;
     display: flex;
     justify-content: center;
     border-radius: 20%;
@@ -84,18 +146,24 @@ body, html {
     padding: 25px;
 }
 .atras {
-    margin-top: 20px;
+    background: -webkit-linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
+    background: linear-gradient(180deg, #1c44e3,#141761,#141761,#1c44e3);
+    width: auto;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 120px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
 }
 .subTitulos h2 {
     font-size: 50px;
     font-family: 'Bahnschrift Condensed';
-    font-weight: 40px;
     color: white;
 }
 .atras h2 {
     font-size: 20px;
     font-family: 'Bahnschrift Condensed';
-    font-weight: 40px;
     color: white;
 }
 .subTitulos:hover, .atras:hover {
@@ -105,6 +173,7 @@ body, html {
 
 .subTitulos a , .atras a {
     text-decoration: none;
+    color: inherit;
 }
 
 
@@ -230,3 +299,8 @@ body, html {
         opacity: 0;
     }
 }
+
+
+
+
+
