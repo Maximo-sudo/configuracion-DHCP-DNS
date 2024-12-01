@@ -10,143 +10,17 @@
     <div class="contenedorCentral">
     <div class="blog">
         <div class="titulos"><h1>Configuración Del DNS</h1></div>
-        
-        <div class="texto"><p>Configuración De Las Zonas Del DNS</p></div>
-        <img src="../capturas/5-configuraciónDNS/p1.png" alt="img/png" class="imagenes">
-        <div class="texto">
-            <h1>Proceso</h1>
-            <p>Para configurar las zonas en el servidor DNS BIND, realizamos lo siguiente</p>
-            <p>En El Archivo --> <code>/etc/bind/named.conf.local</code></p>
-            <p>En el archivo solo nos apareceran las primeras lineas comentadas. Por lo que nosotros añadiremos lo siguiente.</p>
-            <p><strong>Esta configuración define una nueva zona para el dominio <em>ejemplo.com</em> <br>y especifica que el servidor BIND es el servidor maestro para esta zona.</strong></p>
-            <code><strong><p>zone "ejemplo.com" { <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type master; <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file "/etc/bind/db.ejemplo.com"; <br>
-            };</p></strong></code>
-            <br>
-            <ul>
-                <li><strong>zone "ejemplo.com":</strong> Define el nombre del dominio para el que estás creando la zona.</li>
-                <li><strong>type master:</strong> Indica que este servidor DNS es el maestro para esta zona. <br>Es el servidor principal que contiene los datos originales del dominio.</li>
-                <li><strong>file "/etc/bind/db.ejemplo.com":</strong> Especifica la ubicación del archivo de zona que contiene <br>los registros DNS para <code>ejemplo.com</code>.</li>
-            </ul>
-            <br><br>
-        </div>
-        
-        <div class="texto"><p>Clonación Archivo De Configuración De Las Zonas Directas.</p></div>
-        <img src="../capturas/5-configuraciónDNS/p2.png" alt="img/png" class="imagenes">
-
-        <div class="texto"><p>Vista Previa Del Archivo</p></div>
-        <img src="../capturas/5-configuraciónDNS/p3.png" alt="img/png" class="imagenes">
-
-        <div class="texto">
-            <h1>Desglose Del Archivo</h1>
-            <p><strong>Para Entender El Contenido Leed Lo Siguiente</strong></p>
-            <p>El archivo <code>/etc/bind/db.local</code> en el servidor DNS BIND se utiliza para definir los registros DNS para una zona específica. <br>Este archivo contiene la información de mapeo entre los nombres de dominio y sus respectivas direcciones <br>IP u otros tipos de registros DNS. <br>A continuación, te explico los elementos comunes que se configuran en este archivo:</p>
-            <br>
-            <ul>
-                <li><strong>Encabezado</strong></li>
-                <hr>
-                <p><code>$TTL&nbsp; 604800 <br>
-                @ &nbsp;IN &nbsp;SOA &nbsp;&nbsp;localhost. &nbsp;root.localhost. ( <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Serial <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;604800 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Refresh <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;86400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Retry <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2419200 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Expire <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;604800 ) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Negative Cache TTL</code></p>
-                <hr>
-            </ul>
-            <ul>
-                <hr>
-                <li><strong>$TTL: </strong>Define el tiempo de vida (Time To Live) predeterminado para todos los registros en la zona.</li>
-                <li><strong>@: </strong>Representa la zona raíz de este archivo.</li>
-                <li><strong>SOA: </strong>Registro Start of Authority que incluye:</li>
-                <li><strong>localhost: </strong>Nombre del servidor principal.</li>
-                <li><strong>root.localhost: </strong>Dirección de correo electrónico del administrador del DNS (el "@" en el correo es reemplazado por un ".").</li>
-                <li><strong>Serial: </strong>Número de serie de la zona, que debe incrementarse cada vez que se edita la zona.</li>
-                <li><strong>Refresh, Retry, Expire, Negative Cache TTL: </strong>Intervalos de tiempo para las operaciones de actualización y resolución de DNS.</li>
-                <hr>
-            </ul>
-            <ul>
-                <li><strong>Registros DNS</strong></li>
-                <hr>
-                <p><code>@ &nbsp;IN &nbsp;SOA &nbsp;&nbsp;localhost.</code></p>
-                <p>Este registro indica que localhost es el servidor de nombres para esta zona.</p>
-                <hr>
-            </ul>
-            <ul>
-                <li><strong>Registros A</strong></li>
-                <hr>
-                <p><code>localhost.  &nbsp;&nbsp;IN  &nbsp;A   &nbsp;&nbsp;127.0.0.1 </code></p>
-                <p>Este registro mapea localhost a la dirección IP <code>127.0.0.1.</code></p>
-                <hr>
-            </ul>
-
-            <br><br><br>
-            <br>
-            <br>
-        </div>
-        <div class="texto"><p>Configuración Del Archivo De La Zona Directa</p></div>
-        <img src="../capturas/5-configuraciónDNS/p4.png" alt="img/png" class="imagenes">
-
-        <div class="texto"><p>Extra Que No Configure -- Zonas Inversas </p></div>
-        <div class="texto">
-            <h1>Completar Configuración</h1>
-            <p><strong>Para completar tu configuración del servidor DNS con BIND9, necesitas añadir una zona inversa. <br>Esto es fundamental para resolver direcciones IP a nombres de dominio. A continuación, te explico cómo hacerlo:</strong></p>
-            <p><strong>Primero añadiremos la zona al archivo de </strong><code>named.conf.local.code</code> lo siguiente:</p>
-            <code><strong><p>zone "1.168.192.in-addr.arpa" { <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type master; <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file "/etc/bind/db.192.168.1"; <br>
-            };</p></strong></code>
-            <p> Tras ello al igual que realizamos antes deberemos de clonar el archivo, para facilitarnos la configuración</p>
-            <p>El archivo es <code>/etc/bind/db.127</code></p>
-            <p>Lo copiamo y ponemos algo por el estilo, segun nuestra dirección de red<code>/etc/bind/db.192.168.1</code></p>
-            <ul>
-                <li><code>#sudo cp /etc/bind/db.127 /etc/bind/db.192.168.1</code></li>
-            </ul>
-            <p>Tras crearlo deberemos de configurarlo. Se veria algo como esto.</p>
-            <ul>
-            <li><strong>Archivo De La Zona Inversa</strong></li>
-                <hr>
-                <p><code>$TTL&nbsp; 604800 <br>
-                @ &nbsp;&nbsp;&nbsp;IN &nbsp;SOA &nbsp;&nbsp;ns.ejemplo.com. &nbsp;admin.ejemplo.com. ( <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Serial <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;604800 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Refresh <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;86400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Retry <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2419200 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Expire <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;604800 ) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Negative Cache TTL <br>
-                @   &nbsp;&nbsp;&nbsp;IN  &nbsp;NS  &nbsp;&nbsp;&nbsp;ns.ejemplo.com. <br>
-                1.1   &nbsp;IN  &nbsp;PTR &nbsp;&nbsp;ns.ejemplo.com. <br>
-                1.1 &nbsp;IN  &nbsp;PTR &nbsp;&nbsp;www.ejemplo.com.
-                </code></p>
-                <hr>
-            </ul>
-            <ul>
-                <hr>
-                <li><strong>@ IN SOA ns.ejemplo.com.admin.ejemplo.com.:</strong>Proporciona información de autoridad de inicio para la zona.</li>
-                <li><strong>@ IN NS ns.ejemplo.com.:</strong>Especifica el servidor de nombres para la zona.</li>
-                <li><strong>1.1 IN PTR ns.ejemplo.com.:</strong>Mapea la IP <code>192.168.1.1</code> al nombre <code>ns.ejemplo.com.</code></li>
-                <li><strong>1.1 IN PTR www.ejemplo.com.:</strong>Mapea la IP <code>192.168.1.123</code> al nombre <code>www.ejemplo.com</code></li>
-                <hr>
-            </ul>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
-
-        <div class="texto"><p>Reinicio De Los Servicios Y Comprobación.</p></div>
-        <img src="../capturas/5-configuraciónDNS/p5.png" alt="img/png" class="imagenes">
-        <div class="texto"><p>Extra -- Zonas Inversas </p></div>
-        <div class="texto">
-            <h1>Comprobación De La Zona Inversa</h1>
-            <p>Al igual que antes usaremos el siguiente comando <br><code>#sudo named-checkzone 1.168.192.in-addr.arpa /etc/bind/db.192.168.1
-</code></p>
-        <p>Y por ultimo. <strong>En caso de que tengamos varios dominios. <br>Deberemos de tener una configuración distinta por cada una.</strong></p>
-        <p>Y lo mismo, si la red está segmentada en varias subredes. <br> En este caso deberemos de configurar una zona inversa por cada una.</p>
-        </div>
-
-
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <video controls class="viddeo"><source src="../capturas/5-configuraciónDNS/p1.mp4" type="video/mp4"></video>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <div class="atras"><a href="../index.html"><h2>Atrás</h2></a></div>
     </div>
     </div>
