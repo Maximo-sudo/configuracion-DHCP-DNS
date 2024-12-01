@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DHCP && DNS</title>
+    <title>DHCP & DNS</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="blog">
-        <div class="titulos"><h1>Método De Configuración Numero 1º</h1></div>
-        <div class="subTitulos"><a href="1-configuracionMaquinas/index.html"><h2>Configuración De Maquinas</h2></a></div>
-        <div class="subTitulos"><a href=""><h2>Configuración De Las Redes De VirtualBox</h2></a></div>
-        <div class="subTitulos"><a href=""><h2>Configuración De Las Redes Internas</h2></a></div>
-        <div class="subTitulos"><a href=""><h2>Paquetes A Instalar</h2></a></div>
-        <div class="subTitulos"><a href=""><h2>Configuración DHCP</h2></a></div>
-        <div class="subTitulos"><a href=""><h2>Configuración DNS</h2></a></div>
-        <div class="subTitulos"><a href=""><h2>Comprobaciones</h2></a></div>
+        <div class="titulos">
+            <h1>Configuración Maquinas VirtualBox</h1>
+        </div>
+        
+        <div class="texto">
+            <p>Aquí puedes añadir una descripción o información adicional sobre la configuración de las máquinas.</p>
+        </div>
+        <div class="texto">
+            <img src="../capturas/1-maquinas/cap1.png" alt="Imagen de Configuración de Máquinas">
+        </div>
 
-        <div class="atras"><a href=""><h2>Atras</h2></a></div>
+        <div class="atras">
+            <a href="#"><h2>Atrás</h2></a>
+        </div>
     </div>
 
     <div id="circle-bg"></div>
@@ -33,17 +37,17 @@
         <div class="bubble"></div>
         <div class="bubble"></div>
     </div>
+
     <script>
-        //funcion circulos generadora de circulos
         function generateBackgroundCircles() {
             const circleContainer = document.getElementById('circle-bg');
             circleContainer.innerHTML = '';
             const width = window.innerWidth;
             const height = window.innerHeight;
-            const size = 40; 
+            const size = 40;
 
-            for (let y = -20; y < height; y += size * 0.9) { // espaciado vertical
-                for (let x = 0; x < width; x += size * Math.sqrt(3)) { // espaciado horizontal
+            for (let y = -20; y < height; y += size * 0.9) {
+                for (let x = 0; x < width; x += size * Math.sqrt(3)) {
                     const circle = document.createElement('div');
                     circle.className = 'circle extra';
                     circle.style.left = `${x}px`;
@@ -54,7 +58,7 @@
                     const circle = document.createElement('div');
                     circle.className = 'circle extra';
                     circle.style.left = `${x}px`;
-                    circle.style.top = `${y + size * 0.4}px`; // espaciado entre filas
+                    circle.style.top = `${y + size * 0.4}px`;
                     circleContainer.appendChild(circle);
                 }
             }
@@ -62,10 +66,8 @@
 
         generateBackgroundCircles();
 
-        // regargar circulos al cambiar el tamaño de la pantalla
         window.addEventListener('resize', generateBackgroundCircles);
 
-        // efecto radio del raton
         document.addEventListener('mousemove', (event) => {
             const mouseX = event.clientX;
             const mouseY = event.clientY;
@@ -75,7 +77,7 @@
                 const circleX = rect.left + rect.width / 2;
                 const circleY = rect.top + rect.height / 2;
                 const distance = Math.hypot(mouseX - circleX, mouseY - circleY);
-                if (distance < 160) { 
+                if (distance < 160) {
                     circle.classList.add('hover');
                 } else {
                     circle.classList.remove('hover');
